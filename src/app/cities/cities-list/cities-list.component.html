@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="cards-container">
+    <mat-card class="city-container" *ngFor="let city of cities">
+      <mat-card-header>
+        <mat-card-title
+          ><h3>{{ city.city_ascii }}</h3></mat-card-title
+        >
+        <mat-card-subtitle>{{ city.country }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          lat : <code>{{ city.lat }}</code>
+        </p>
+        <p>
+          lng : <code>{{ city.lng }}</code>
+        </p>
+        <p>population : {{ city.population }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="paginator-container">
+    <mat-paginator
+      #paginator
+      [length]="paginationData?.totalElements"
+      [pageSize]="5"
+      (page)="handlePageEvent($event)"
+    >
+      >
+    </mat-paginator>
+  </div>
+</div>

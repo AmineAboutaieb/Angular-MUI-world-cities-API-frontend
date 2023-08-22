@@ -1,0 +1,13 @@
+.account-auth-success{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.account-auth-success h4, .account-auth-success p, .account-auth-success button{
+  margin:4px 0;
+}
+
+.account-created-message button{
+  cursor:pointer;
+}

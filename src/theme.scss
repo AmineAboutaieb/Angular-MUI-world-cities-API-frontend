@@ -1,0 +1,21 @@
+@import "../node_modules/@angular/material/theming";
+@include mat-core();
+
+
+
+
+$my-primary: mat-palette($mat-blue-gray, 500);
+$my-accent: mat-palette($mat-deep-orange, 500);
+$my-success: mat-palette($mat-green, 400);
+$my-failure: mat-palette($mat-red, 500);
+
+$my-theme: mat-light-theme($my-primary, $my-accent);
+
+@include angular-material-theme($my-theme);
+
+:root {
+  --primary-color: #{mat-color($my-primary)};
+  --accent-color: #{mat-color($my-accent)};
+  --success-color: #{mat-color($my-success)};
+  --failure-color: #{mat-color($my-failure)};
+}

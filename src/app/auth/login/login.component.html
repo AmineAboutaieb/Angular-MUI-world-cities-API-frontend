@@ -1,0 +1,97 @@
+<div class="container form-container">
+  <h3>Login</h3>
+  <form
+    *ngIf="!showOtpForm"
+    action=""
+    method="post"
+    [formGroup]="formData"
+    (ngSubmit)="handleSubmit()"
+    class="form"
+  >
+    <mat-form-field class="form-control" appearance="fill">
+      <mat-label for="email">Email</mat-label>
+      <input type="email" id="email" formControlName="email" matInput />
+      <mat-error
+        *ngIf="
+          formData.get('email')?.hasError('required') &&
+          (formData.get('email')?.dirty || formData.get('email')?.touched)
+        "
+      >
+        <small>Email is required *</small>
+      </mat-error>
+      <mat-error
+        *ngIf="formData.get('email')?.errors?.['email'] && formData.get('email')?.dirty"
+      >
+        <small>Email is not valid *</small>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-control" appearance="fill">
+      <mat-label for="password">Password</mat-label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        matInput
+      />
+      <mat-error
+        *ngIf="
+          formData.get('password')?.invalid &&
+          (formData.get('password')?.dirty || formData.get('password')?.touched)
+        "
+      >
+        <small>Password is required *</small>
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-control">
+      <button
+        class="form-submit-button"
+        mat-raised-button
+        color="accent"
+        *ngIf="!loginLoading && showLoginButton"
+        [disabled]="!formData.valid"
+      >
+        Login
+      </button>
+    </div>
+    <mat-spinner
+      *ngIf="loginLoading"
+      color="accent"
+      [diameter]="70"
+    ></mat-spinner>
+  </form>
+  <div *ngIf="showOtpForm">
+    <form
+      action=""
+      method="post"
+      [formGroup]="otpForm"
+      (ngSubmit)="handleOtpSubmit()"
+      class="form"
+    >
+      <mat-form-field class="form-control" appearance="fill">
+        <mat-label for="otp">OTP</mat-label>
+        <input type="text" id="otp" formControlName="otp" matInput />
+        <mat-error
+          *ngIf="
+            otpForm.get('otp')?.invalid &&
+            (otpForm.get('otp')?.dirty || otpForm.get('otp')?.touched)
+          "
+        >
+          <small>OTP is required *</small>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="form-control">
+        <button
+          mat-raised-button
+          *ngIf="!loginLoading && showLoginButton"
+          [disabled]="!otpForm.valid"
+          class="form-submit-button"
+          color="accent"
+        >
+          Verify Code
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

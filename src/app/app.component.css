@@ -1,0 +1,34 @@
+.global-loading{
+  width:100vw;
+  height:90vh;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-sidenav{
+  width:20%;
+  padding:64px 5px 5px 5px;
+}
+
+.sidenav-content{
+  padding-top:64px;
+  overflow-y:auto;
+  height:90%;
+}
+
+.is-active {
+  background-color: #ccc;
+}
+
+
+@media screen and (max-width: 768px) {
+  .mat-sidenav{
+    width:50%;
+  }
+}
