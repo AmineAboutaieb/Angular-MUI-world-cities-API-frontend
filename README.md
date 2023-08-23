@@ -1,4 +1,5 @@
 # AngularAuthApp
+The frontend application is hosted on this address : https://world-cities.application-testing-endpoint-server.xyz
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
