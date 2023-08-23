@@ -56,3 +56,9 @@ a{
     width:80%;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .form{
+    width:99%;
+  }
+}

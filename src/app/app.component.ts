@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { LoginService } from './services/auth/login/login.service';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { MaterialSidenavService } from './services/material-sidenav.service';
 import { ToastrService } from 'ngx-toastr';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  @ViewChild('sidenav') public sidenav?: MatSidenav;
   title = 'angular-auth-app';
 
   loggedInUiLoading: Boolean = true;
@@ -25,15 +27,18 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
+    this.sideNavService.sidenavOpen.subscribe(() => {
+      this.sidenav?.toggle();
+    });
     this.loginService
       .getLoggedInUi()
       .subscribe((response) => (this.loggedInUiLoading = response));
     this.loginService.onStartupSetState();
-    this.sideNavService.getSideNavOpen().subscribe({
-      next: (response) => {
-        this.sidenavOpen = response;
-      },
-    });
+    // this.sideNavService.getSideNavOpen().subscribe({
+    //   next: (response) => {
+    //     this.sidenavOpen = response;
+    //   },
+    // });
     this.loginService
       .getLoggedIn()
       .subscribe((response) => (this.isLoggedIn = response));

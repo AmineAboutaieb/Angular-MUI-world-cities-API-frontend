@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MaterialSidenavService {
+  public sidenavOpen: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  private  sidenavOpen: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
-
-  getSideNavOpen(): Observable<boolean>{
-    return this.sidenavOpen;
-  }
-
-  toggleSideNav(){
+  toggleSideNav() {
     this.sidenavOpen.next(!this.sidenavOpen.getValue());
   }
 
-
+  public toggle() {
+    return this.sidenavOpen.next(null);
+  }
 }

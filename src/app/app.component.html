@@ -1,7 +1,7 @@
 <div *ngIf="!loggedInUiLoading" class="app-wrapper">
   <app-navbar></app-navbar>
   <mat-sidenav-container class="drawer-container" fullscreen>
-    <mat-sidenav mode="over" [opened]="sidenavOpen" [autoFocus]="false">
+    <mat-sidenav #sidenav mode="over" [autoFocus]="false">
       <mat-nav-list>
         <mat-list-item
           routerLink="/"
